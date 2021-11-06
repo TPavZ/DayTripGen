@@ -55,17 +55,24 @@ lets_go = run_tip_planner(str(input("\nShould we start the day-trip planner?\nYe
 if lets_go == True:
     results = entire_list_of_options(where, eat, how, fun)
     while results == True:
-        where = generate_from_list(destinations)
-        eat = generate_from_list(restaurants)
-        how = generate_from_list(transport_options)
-        fun = generate_from_list(entertain_options)
-        results = entire_list_of_options(where, eat, how, fun)
+        re_gen = input("\n\nWhat would you like to change?\nFor All, type 'a'\nFor the destination, type 'd'\nFor what to eat, type 'e'\nFor transportation method, type 't'\nFor entertainment, type 'f'\nEnter HERE:").lower()
+        if re_gen == "a":
+            where = generate_from_list(destinations)
+            eat = generate_from_list(restaurants)
+            how = generate_from_list(transport_options)
+            fun = generate_from_list(entertain_options)
+            results = entire_list_of_options(where, eat, how, fun)
+        elif re_gen == "d":
+            where = generate_from_list(destinations)
+            results = entire_list_of_options(where, eat, how, fun)
+        elif re_gen == "e":
+            eat = generate_from_list(restaurants)
+            results = entire_list_of_options(where, eat, how, fun)
+        elif re_gen == "t":
+            how = generate_from_list(transport_options)
+            results = entire_list_of_options(where, eat, how, fun)
+        elif re_gen == "f":
+            fun = generate_from_list(entertain_options)
+            results = entire_list_of_options(where, eat, how, fun)
     else:
         print(f"\n\nCompleted!\n\nYour generated day trip will consist of {how} to {where}, to eat {eat}, then going {fun} to conclude the night. \nHAVE FUN!\n\n")
-
-        #what should we re-generate?
-        # if re_gen == "a" for all
-        #if re_gen == "d" for destination
-        #if re_gen == "e" for what to eat
-        #if re_gen == "t" for transport method
-        #if re_gen == "f" for entertainment
